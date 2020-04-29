@@ -1,44 +1,51 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# react練習用レポジトリ
+## 使用するライブラリ
+- Formik
+- react-use
+- react-table
+- react-router
 
-## Available Scripts
+以下の記述は(こちら)[https://qiita.com/102Design/items/9c893d375b3bf59701df]から抜粋しています。
 
-In the project directory, you can run:
+## 初級者
+- [x] Stateの更新・propsの使用ができる
+- [x] 配列を使って要素の描画ができる
+- [x] formを使ってpostすることができる
+- [ ] ライフサイクルメソッドを使うことができる
+- [x] UIライブラリを使ってスタイルを付けられる
 
-### `yarn start`
+## 簡単なビューであれば作成・修正ができるレベル
+- [x] lintの設定ができる
+- [x] Formaterの設定ができる
+- [x] react-routerを使いページ遷移をさせることができる。
+- [ ] 配列内のkeyの意味がわかる。また、keyにどんな値を入れるのが適切なのか述べることができる
+- [ ] 余計なdivタグを書かずにマークアップできる（fragmentを使う）
+- [x] スタイルの適用ができる
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## 基本的なビューであれば問題なく任せられるレベル
+- [ ] classコンポーネントと関数コンポーネントの違い・メリット・デメリットがわかる
+- [ ] TypeScriptを使って書くことができる
+- [ ] TypeScriptで書くことのメリットを述べることができる
+- [ ] Reduxが何をしているか理解している
+- [ ] Reduxを使ってStateの更新をすることができる
+- [ ] APIを使ってデータの取得・更新ができる。また、Storeに入れることができる。
+- [ ] hooksを使ってコードを書くことができる
+- [ ] ライフサイクルメソッドを理解して使うことができる。また、あまり使用しない方が良い理由を述べることができる
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## 1人月として計算ができレビューも任せられるレベル
+- [ ] テストコードを書くことができる
+- [ ] メモリーリークに気をつけてコーディングできる
+- [ ] ログイン・サインアップなどAuth周りの実装ができる
+- [ ] Reduxのメリット・デメリットを述べることができる
+- [ ] middlewareで処理をすることができる。また、そのメリットデメリットを述べられる
+- [ ] ReactのComponentとは何か理解している
+- [ ] 必要であればカスタムhooksを作ることができる
+- [ ] Code-Splittingを使うことができる。また、そのメリットを述べることができる。
+- [ ] レビューすることができる
 
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 0からのプロジェクトでも難なくこなせるレベル
+- [ ] Componentの設計ができる
+- [ ] エラーハンドリングを実装できる
+- [ ] Reduxを使う基盤を設計することができる
+- [ ] パフォーマンスの改善ができる
+- [ ] そのプロジェクトでどの範囲のテストをする必要があるのか判断でき、指標を示すことができる
