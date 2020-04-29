@@ -1,11 +1,11 @@
 # react練習用レポジトリ
-## 使用するライブラリ
+## 練習として使用するライブラリ
 - Formik
 - react-use
 - react-table
 - react-router
 
-以下の記述は(こちら)[https://qiita.com/102Design/items/9c893d375b3bf59701df]から抜粋しています。
+以下の記述は[こちら](https://qiita.com/102Design/items/9c893d375b3bf59701df)から抜粋しています。
 
 ## 初級者
 - [x] Stateの更新・propsの使用ができる
