@@ -1,23 +1,25 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+# api側
+api/.bundle
+api/log/*
+api/tmp/*
+api/log/.keep
+api/tmp/.keep
+api/storage/*
+api/storage/.keep
+api/.byebug_history
+api/config/master.key
+api/vendor/bundle
 
-# dependencies
-/node_modules
-/.pnp
-.pnp.js
+# front
+front/node_modules
+front/coverage
+front/build
+front/.DS_Store
+front/.env.local
+front/env.development.local
+front/.env.test.local
+front/.env.production.local
 
-# testing
-/coverage
-
-# production
-/build
-
-# misc
-.DS_Store
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+front/npm-debug.log*
+front/yarn-debug.log*
+front/yarn-error.log*
