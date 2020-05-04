@@ -4,7 +4,7 @@ class Users < Grape::API
       def user_permit_params
         ActionController::Parameters.new(params)
                                     .permit(:first_name, :last_name, :email,
-                                            :password, :password_confirm)
+                                            :password, :password_confirmation)
       end
     end
 
@@ -15,10 +15,11 @@ class Users < Grape::API
 
     desc 'POST /users/new'
     params do
-      requires :first_name, type: String
-      requires :last_name,  type: String
-      requires :email,      type: String
-      requires :password,   type: String
+      requires :first_name,            type: String
+      requires :last_name,             type: String
+      requires :email,                 type: String
+      requires :password,              type: String
+      requires :password_confirmation, type: String
     end
 
     post '/new' do

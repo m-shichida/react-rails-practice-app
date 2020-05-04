@@ -11,39 +11,45 @@ import {
 } from "@material-ui/core";
 import { SendRounded } from "@material-ui/icons";
 
+import userService from "../repository/user";
+
 export const FormikForm = () => {
   const classes = useStyles();
 
   return (
     <Formik
       initialValues={{
-        fullName: "",
+        firstName: "",
+        lastName: "",
         email: "",
         password: "",
-        passwordConfirm: "",
+        passwordConfirmation: "",
       }}
       validationSchema={Yup.object({
-        fullName: Yup.string().required("必須項目です"),
+        firstName: Yup.string().required("必須項目です"),
+        lastName: Yup.string().required("必須項目です"),
         email: Yup.string()
           .email("無効なメールアドレスです")
           .required("必須項目です"),
         password: Yup.string().required("必須項目です"),
-        passwordConfirm: Yup.string()
+        passwordConfirmation: Yup.string()
           .oneOf([Yup.ref("password")], "passwordと一致しません")
           .required("必須項目です"),
       })}
       onSubmit={(values, { setSubmitting }) => {
-        setTimeout(() => {
-          alert(JSON.stringify(values, null, 2));
+        const login = async () => {
+          const response = await userService.registrateUser(values);
+          alert(response);
           setSubmitting(false);
-        }, 400);
+        };
+        login();
       }}
     >
       {({ errors, touched }) => (
         <Container style={{ marginTop: "112px" }} maxWidth="sm">
           <Paper className={classes.paper} elevation={3}>
             <Form>
-              <ErrorMessage name="fullName">
+              <ErrorMessage name="firstName">
                 {(msg) => (
                   <Typography className={classes.errorMessage}>
                     {msg}
@@ -51,13 +57,30 @@ export const FormikForm = () => {
                 )}
               </ErrorMessage>
               <Field
-                name="fullName"
-                label="フルネーム"
+                name="firstName"
+                label="姓"
                 as={TextField}
                 type="text"
                 variant="outlined"
                 fullWidth
-                error={errors.fullName && touched.fullName}
+                error={errors.firstName && touched.firstName}
+              />
+              <ErrorMessage name="lastName">
+                {(msg) => (
+                  <Typography className={classes.errorMessage}>
+                    {msg}
+                  </Typography>
+                )}
+              </ErrorMessage>
+              <Field
+                className={classes.interval}
+                name="lastName"
+                label="名"
+                as={TextField}
+                type="text"
+                variant="outlined"
+                fullWidth
+                error={errors.lastName && touched.lastName}
               />
               <ErrorMessage name="email">
                 {(msg) => (
@@ -102,13 +125,15 @@ export const FormikForm = () => {
               </ErrorMessage>
               <Field
                 className={classes.interval}
-                name="passwordConfirm"
+                name="passwordConfirmation"
                 type="password"
                 as={TextField}
                 label="パスワード確認"
                 variant="outlined"
                 fullWidth
-                error={errors.passwordConfirm && touched.passwordConfirm}
+                error={
+                  errors.passwordConfirmation && touched.passwordConfirmation
+                }
               />
               <div className={classes.buttonWrapper}>
                 <Button
@@ -116,6 +141,7 @@ export const FormikForm = () => {
                   variant="contained"
                   color="primary"
                   endIcon={<SendRounded />}
+                  type="submit"
                 >
                   Send
                 </Button>
