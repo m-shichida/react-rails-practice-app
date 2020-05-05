@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import * as Yup from "yup";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import {
@@ -13,7 +14,7 @@ import { SendRounded } from "@material-ui/icons";
 
 import userService from "../repository/user";
 
-export const FormikForm = () => {
+export const SignUp = () => {
   const classes = useStyles();
 
   return (
@@ -37,12 +38,13 @@ export const FormikForm = () => {
           .required("必須項目です"),
       })}
       onSubmit={(values, { setSubmitting }) => {
-        const login = async () => {
+        const signUp = async () => {
           const response = await userService.registrateUser(values);
-          alert(response);
+          alert(response.message);
+          console.log(response.access_token); // トークンの取得
           setSubmitting(false);
         };
-        login();
+        signUp();
       }}
     >
       {({ errors, touched }) => (
@@ -139,6 +141,18 @@ export const FormikForm = () => {
                 <Button
                   className={classes.interval}
                   variant="contained"
+                  color="default"
+                >
+                  <Link
+                    style={{ color: "#000000", textDecoration: "none" }}
+                    to="/"
+                  >
+                    ログインへ
+                  </Link>
+                </Button>
+                <Button
+                  className={classes.interval}
+                  variant="contained"
                   color="primary"
                   endIcon={<SendRounded />}
                   type="submit"
@@ -163,7 +177,7 @@ const useStyles = makeStyles({
   },
   buttonWrapper: {
     display: "flex",
-    justifyContent: "flex-end",
+    justifyContent: "space-between",
   },
   errorMessage: {
     fontSize: "0.8rem",

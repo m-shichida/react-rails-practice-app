@@ -20,11 +20,24 @@ export default {
         password: params.password,
         password_confirmation: params.passwordConfirmation,
       })
+      .then((response) => {
+        return JSON.parse(JSON.stringify(response.data));
+      })
       .catch((e: AxiosError) => {
-        return {
-          error: 500,
-          errorMessages: "エラーが発生しました",
-        };
+        alert("エラーが発生しました");
+        return null;
+      });
+    return response;
+  },
+  async getUsers() {
+    const response = await axiosInstance
+      .get("/users")
+      .then((response) => {
+        return JSON.parse(JSON.stringify(response.data));
+      })
+      .catch((e: AxiosError) => {
+        alert("エラーが発生しました");
+        return null;
       });
     return response;
   },
