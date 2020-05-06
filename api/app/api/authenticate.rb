@@ -7,9 +7,9 @@ class Authenticate < Grape::API
   desc 'GET /api/login'
   get '/login' do
     user = User.find_by(email: params[:email])
-    user.authenticate!(params[:password])
-    user.create_access_token!
-    present token: user.access_token.token
+    user.create_access_token if user.authenticate(params[:password])
+    present message: I18n.t('api.messages.login'),
+            token: user.access_token.token
   end
 
   desc 'GET /api/login_test'
@@ -20,9 +20,9 @@ class Authenticate < Grape::API
   get '/login_test' do
     user = User.find_by(id: params[:user_id])
     user.create_access_token!
-    request.headers['User-Token'] = user.access_token.token
+    session[:access_token] = user.access_token.token
 
-    present user.access_token.token
+    present message: I18n.t('api.messages.login')
   end
 
   desc 'GET /api/logout'
@@ -32,7 +32,6 @@ class Authenticate < Grape::API
   end
 
   desc 'DELETE /api/logout_test'
-  before { authenticate! }
 
   delete '/logout_test' do
     current_user.access_token.destroy!

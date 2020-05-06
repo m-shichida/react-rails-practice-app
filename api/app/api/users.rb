@@ -10,7 +10,7 @@ class Users < Grape::API
 
     desc 'GET /users'
     get '/' do
-      User.all
+      present User.all, with: Entities::UserEntity
     end
 
     desc 'POST /users/new'
