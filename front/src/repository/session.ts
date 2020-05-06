@@ -10,9 +10,11 @@ interface LoginParams {
 export default {
   async loginUser(params: LoginParams) {
     const response = await axiosInstance
-      .post("/login", {
-        email: params.email,
-        password: params.password,
+      .get(`/login`, {
+        params: {
+          email: params.email,
+          password: params.password,
+        },
       })
       .then((response) => {
         return JSON.parse(JSON.stringify(response.data));

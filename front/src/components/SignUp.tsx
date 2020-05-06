@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import * as Yup from "yup";
 import { Formik, Field, Form, ErrorMessage } from "formik";
@@ -13,9 +13,11 @@ import {
 import { SendRounded } from "@material-ui/icons";
 
 import userService from "../repository/user";
+import { UserTokenContext } from "../Router";
 
 export const SignUp = () => {
   const classes = useStyles();
+  const { setToken } = useContext(UserTokenContext);
 
   return (
     <Formik
@@ -41,10 +43,10 @@ export const SignUp = () => {
         const signUp = async () => {
           const response = await userService.registrateUser(values);
           alert(response.message);
-          console.log(response.access_token); // トークンの取得
-          setSubmitting(false);
+          setToken(response.access_token);
         };
         signUp();
+        setSubmitting(false);
       }}
     >
       {({ errors, touched }) => (

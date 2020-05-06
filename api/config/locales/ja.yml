@@ -13,6 +13,7 @@ ja:
       created: "%{resource}を作成しました"
       updated: "%{resource}を更新しました"
       deleted: "%{resource}を削除しました"
+      login: ログインしました
       logout: ログアウトしました
   date:
     abbr_day_names:

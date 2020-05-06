@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import {
   Button,
@@ -13,9 +13,11 @@ import * as Yup from "yup";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 
 import sessionService from "../repository/session";
+import { UserTokenContext } from "../Router";
 
 export const Login = () => {
   const classes = useStyles();
+  const { setToken } = useContext(UserTokenContext);
 
   return (
     <Formik
@@ -27,10 +29,10 @@ export const Login = () => {
       onSubmit={(values, { setSubmitting }) => {
         const login = async () => {
           const response = await sessionService.loginUser(values);
-          alert(response.uid);
-          setSubmitting(false);
+          setToken(response.token);
         };
         login();
+        setSubmitting(false);
       }}
     >
       {({ errors, touched }) => (
